@@ -3,23 +3,23 @@ mongoose.Promise = global.Promise
 const farmerSchemas = new mongoose.Schema({
     fname: {
         type: String,
-        // required: true
+        required: true
     },
     lname: {
         type: String,
-        // required: true
+        required: true
     },
     bday: {
         type: String,
-        // required: true
+        required: true
     },
     address: {
         type: String,
-        // required: true
+        required: true
     },
-    mobileno: {
+    mobileNo: {
         type: Number,
-        // required: true
+        required: true
     },
 
     email: {
@@ -28,23 +28,23 @@ const farmerSchemas = new mongoose.Schema({
     },
     state: {
         type: String,
-        // required: true
+        required: true
     },
     city: {
         type: String,
-        // required: true
+        required: true
     },
     pincode: {
         type: Number,
-        // required: true
+        required: true
     },
     password: {
         type: String,
         required: true
     },
-    cpassword: {
+    confirmPassword: {
         type: String,
-        // required: true
+        required: true
     }
 
 })

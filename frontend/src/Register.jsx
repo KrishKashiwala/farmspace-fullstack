@@ -35,18 +35,31 @@ const Register = ({ history }) => {
     const [address, setAddress] = useState('')
     const [bday, setBday] = useState('')
     const [email, setEmail] = useState('')
+    const [pincode, setPincode] = useState('')
+    const [mobileNo, setMobileNo] = useState('')
+    const [city, setCity] = useState('')
+    const [state, setState] = useState('')
+    const [confirmPassword, setConfirmPassword] = useState('')
     const [password, setPassword] = useState('')
+
     console.log(history)
     const registerinfo = () => {
         Axios({
             method: 'POST',
             data: {
-                // fname: fname,
-                // lname: lname,
-                // address: address,
+                fname: fname,
+                lname: lname,
+                address: address,
                 email: email,
-                // bday: bday,
-                password: password
+                bday: bday,
+                confirmPassword: confirmPassword,
+                password: password,
+                pincode: pincode,
+                city: city,
+                state: state,
+                mobileNo: mobileNo,
+                // eslint-disable-next-line no-dupe-keys
+                address: address
             },
             withCredentials: true,
             url: 'http://localhost:5000/farmer/register'
@@ -78,7 +91,7 @@ const Register = ({ history }) => {
                 </div>
                 <div className="form-group">
                     <label htmlFor="bday">Birthday</label>
-                    <input type="date" onChange={(e) => setBday(e.target.value)} className="form-" name="bday" className="form-control col-md-4" id="bday" />
+                    <input type="date" onChange={(e) => setBday(e.target.value)} name="bday" className="form-control col-md-4" id="bday" />
 
                 </div>
 
@@ -92,22 +105,22 @@ const Register = ({ history }) => {
                         <input type="email" onChange={(e) => setEmail(e.target.value)} name="email" className="form-control" id="email" placeholder="enter your email " />
                     </div>
                     <div className="form-group col-md-6">
-                        <label htmlFor="mobileno">Mobile No</label>
-                        <input type="number" name="mobileno" className="form-control" id="mobileno" placeholder="enter your mobile no. " />
+                        <label htmlFor="mobileNo">Mobile No</label>
+                        <input type="number" onChange={(e) => setMobileNo(e.target.value)} name="mobileNo" className="form-control" id="mobileNo" placeholder="enter your mobile no. " />
                     </div>
                 </div>
                 <div className="form-row">
                     <div className="form-group col-md-3">
                         <label htmlFor="state">State</label>
-                        <input type="text" className="form-control" name="state" id="state" placeholder="select your state" />
+                        <input type="text" className="form-control" name="state" onChange={(e) => setState(e.target.value)} id="state" placeholder="select your state" />
                     </div>
                     <div className="form-group col-md-4">
                         <label htmlFor="city">City / Village</label>
-                        <input type="text" className="form-control" name="city" id="city" placeholder="select your city" />
+                        <input type="text" className="form-control" name="city" id="city" onChange={(e) => setCity(e.target.value)} placeholder="select your city" />
                     </div>
                     <div className="form-group col-md-5">
                         <label htmlFor="pincode">Pincode</label>
-                        <input type="number" className="form-control" name="pincode" id="pincode" placeholder="enter your pincode" />
+                        <input type="number" className="form-control" name="pincode" id="pincode" onChange={(e) => setPincode(e.target.value)} placeholder="enter your pincode" />
                     </div>
 
                 </div>
@@ -117,8 +130,8 @@ const Register = ({ history }) => {
                         <input className="form-control" onChange={(e) => setPassword(e.target.value)} type="password" name="password" id="password" placeholder="enter a password" />
                     </div>
                     <div className="form-group col-md-6">
-                        <label htmlFor="cpassword">Confirm Password</label>
-                        <input className="form-control" type="password" name="cpassword" id="cpassword" placeholder="re-enter your password" />
+                        <label htmlFor="confirmPassword">Confirm Password</label>
+                        <input className="form-control" type="password" onChange={(e) => setConfirmPassword(e.target.value)} name="confirmPassword" id="confirmPassword" placeholder="re-enter your password" />
                     </div>
                 </div>
                 <button onClick={registerinfo} className="btn btn-success btn-block">Submit</button>
