@@ -85,12 +85,13 @@ const Login = () => {
                 password: password
             },
             withCredentials: true,
+            credentials: 'same-origin',
             url: 'http://localhost:5000/farmer/login',
 
         }).then(function (response) {
 
             if (response.data.redirect === '/') {
-                window.location = `/afterhome/${response.data.val.id}`
+                window.location = `/afterhome/${response.data.val._id}`
             }
             else if (response.data.redirect === '/error') {
                 console.log('error in login after')

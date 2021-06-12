@@ -2,6 +2,7 @@ const passport = require('passport');
 const mongoose = require('mongoose')
 const LocalStrategy = require('passport-local').Strategy;
 const Farmers = mongoose.model('farmerdata')
+const bcrypt = require('bcrypt')
 const { genPassword, validPassword } = require('../lib/passwordUtils');
 const customFields = {
     usernameField: 'email',
@@ -14,7 +15,7 @@ const verifyCallback = (username, password, done) => {
 
             if (!user) { return done(null, false) }
 
-            const isValid = validPassword(password, user.hash, user.salt);
+            const isValid = bcrypt.compare(user.password, password)
 
             if (isValid) {
                 return done(null, user);
@@ -30,11 +31,11 @@ const verifyCallback = (username, password, done) => {
 const strategy = new LocalStrategy(customFields, verifyCallback)
 passport.use(strategy);
 passport.serializeUser((user, done) => {
-    done(null, user.id);
+    done(null, user._id);
 });
 
-passport.deserializeUser((userId, done) => {
-    Farmers.findById(userId)
+passport.deserializeUser((_id, done) => {
+    Farmers.findById(_id)
         .then((user) => {
             done(null, user);
         })

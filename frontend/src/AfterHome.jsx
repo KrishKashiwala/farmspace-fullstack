@@ -109,7 +109,7 @@ const AfterHome = ({ match }) => {
                         {/* register page */}
 
                         <Link to="/login">
-                            <li key={loggedFarmer._id}>{loggedFarmer.fname}</li>
+                            <li key={loggedFarmer._id}>{loggedFarmer.email}</li>
                         </Link>
 
                         <li className="free"><a className="btn free" href="#trendcontainer">Trending</a></li>

@@ -40,8 +40,8 @@ const dbOptions = {
 }
 
 app.use(session({
-    secret: process.env.SECRET,
-    resave: false,
+    secret: 'anything',
+    resave: true,
     saveUninitialized: true,
     store: MongoStore.create({ mongoUrl: process.env.DATABASE, collection: 'sessions', ...dbOptions }),
     cookie: {

@@ -1,5 +1,8 @@
 const mongoose = require('mongoose')
 const passport = require('passport')
+const express = require('express')
+const router = express.Router()
+const bcrypt = require('bcrypt')
 const { genPassword, validPassword } = require('../lib/passwordUtils');
 require('../config/passportConfig')
 const Farmers = mongoose.model('farmerdata')
@@ -12,31 +15,61 @@ exports.baseRoute = async (req, res, next) => {
     }
 }
 exports.createFarmer = (req, res, next) => {
-    const saltHash = genPassword(req.body.password);
+    Farmers.findOne({ email: req.body.email }, async (err, data) => {
+        if (err) {
+            console.log(err)
+            res.json({ 'msg': err })
+        }
+        if (data) {
+            console.log('not created')
+            var redir = { redirect: '/login' };
+            return res.json(redir);
+        }
+        if (!data) {
+            const hashedPassword = await bcrypt.hash(req.body.password, 10)
+            const newFarmer = new Farmers({
 
-    const salt = saltHash.salt;
-    const hash = saltHash.hash;
+                email: req.body.email,
+                password: hashedPassword,
 
-    const newUser = new Farmers({
-        email: req.body.email,
-        password: hash
-    });
-
-    newUser.save()
-        .then((user) => {
-            console.log('this is user')
-            console.log('this is user', user);
-        });
-
-    res.json({ 'redirect': '/login' })
+            })
+            await newFarmer.save()
+            console.log('farmer created')
+            var redir = { redirect: '/login' };
+            return res.json(redir);
+        }
+    })
 
 }
 
+// router.get('/success-login', (req, res, next) => {
+//     res.json({ 'val': req.user, 'redirect': '/' })
+// })
+// router.get('/failed-login', (req, res, next) => {
+//     res.json({ 'redirect': '/error' })
+// })
 exports.validFarmer = (req, res, next) => {
-    passport.authenticate('local', { failureRedirect: '/failed-login', successRedirect: '/success-login' })
-
+    passport.authenticate('local', (err, user, info) => {
+        if (err) { return next(err); }
+        if (!user) {
+            console.log('redirected to login')
+            res.json({ 'redirect': '/error' });
+        }
+        req.login(user, (err) => {
+            console.log('hello user', user)
+            res.json({ 'val': user, 'redirect': '/' })
+        });
+    })
 }
 exports.logout = (req, res, next) => {
     req.logout();
     res.redirect('/')
+}
+exports.loggedFarmerData = (req, res) => {
+    Farmers.findById({ _id: req.params.id }, (err, data) => {
+        if (err) console.log(err)
+        else {
+            res.json(data)
+        }
+    })
 }
