@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+body {
+  font-family: 'Roboto', sans-serif;
+  
+}
+ li{
+    list-style : none;
+}
+ a {
+    text-decoration: none;
+    
+}
+.nav-ul {
+    
+    display : flex;
+    background : #FFFFFF;
+    flex-direction : row;
+    gap : 2em;
+    position : fixed;
+    width : 100%;
+    padding : 0.4rem;
+}
+.options  , .end_nav {
+    display : flex;
+    flex-direction : row;
+    gap : 3em;
+    justify-content: space-around;
+    align-items : center;
+}
+.options a , .end_nav a{
+    color : grey;
+    text-decoration: none;
+
+}
+.options a:hover , .end_nav a:hover{
+    color : #05DA73;
+}
+.end_nav{
+    display  : flex;
+    gap : 3em;
+    margin-left : 40em;
+}
+.free a {
+    background : #27a56a;
+    border-radius : 0.3em;
+    padding : 0.7em;
+    color : #FFFFFF;
+}
+.free a:hover{
+    color : #FFFFFF;
+}
+
+.logoutbutton a{
+    border-radius  : 0.3em;
+    background : #D73844;
+    color : white;
+    padding : 0.7em;
+}
+.logoutbutton a:hover{
+    color : #FFFFFF;
+}
+
+.landing_page{
+    display : flex;
+    flex-direction: row;
+    width : 100%;
+    height : 50rem;
+    background : black;        
+    background-size : cover;
+}
+.landing_page img{
+    width : 100%;
+    height : 50rem;
+    background-size: contain;
+}
+.landing_page h1  {
+  position: absolute;
+  color : #FFFFFF;
+  top: 50%;
+  left: 50%;
+  transform: translate(-80%, -50%);
+  font-size : 50px;
+}
+.landing_page a{
+  position : absolute;
+  top: 70%;
+  left: 15%;
+  transform: translate(-80%, -50%);
+    background : #137e4c;
+    border-radius : 0.3em;
+    padding : 0.7em;
+    color : #FFFFFF;
+}
+.landing_page a:hover{
+    color : white;
+}
+.title_cards{
+    justify-content: center; 
+    align-items: center;
+    text-align : center;    
+    font-size : 3em;
+    font-family: 'Ubuntu', sans-serif;
+    width : 2em;
+    margin-left : 2em;
+}
+.veg{
+    border-left : 13px solid greenyellow;
+}
+.fru{
+
+    border-left : 13px solid red;
+}
+.spi{
+
+    border-left : 13px solid brown;
+}
+.cards{
+    display : flex;
+    flex-direction: row;
+    
+    width : 100%;
+    height : max-content;
+    justify-content : space-around;
+    margin-top : 6em;
+    margin-bottom : 6em;
+    
+}
+.veggies_card , .fruits_card , .spices_card{
+    align-items : flex-start;
+    
+   width: 300px;
+  box-sizing: border-box;
+  padding: 1em;
+  font-family: 'Roboto', sans-serif;
+  border-radius: 25px;
+  color: white;
+  box-shadow: 5px 5px 10px #ccc;
+  float: left;
+  height : 30em;
+  
+}
+.veggies_card{
+    color : black;
+  background: linear-gradient(150deg,rgba(0, 255, 42, 0.384) ,rgb(33, 233, 7) 100%);
+}
+.spices_card{
+    color : black;
+ background: linear-gradient(150deg, #ef3939, #00f13c 100%);
+}
+.fruits_card{
+    color : black;  
+   background: linear-gradient(150deg, #f0ff1a,red ,  #0b041f7a 100%);
+}
+#trendcontainer{
+    display : flex;
+    flex-direction : column;
+   justify-content:flex-start;
+   
+    
+}
+.trending_veggies , .trending_fruits , .trending_spices{
+    display : flex;
+    justify-content: space-between;
+ flex-direction: row;   
+ align-items : center;
+ margin-top:2em;
+ margin-right : 2em;
+ 
+}
+.extra {
+    font-family: 'Bebas Neue', cursive;
+    margin-bottom : 2em;
+    text-align : center;    
+    margin-top : 2em;
+    font-size : 60px;
+}
