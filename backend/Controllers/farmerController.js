@@ -59,7 +59,7 @@ exports.validFarmer = (req, res, next) => {
             console.log('hello user', user)
             res.json({ 'val': user, 'redirect': '/' })
         });
-    })
+    })(req, res, next)
 }
 exports.logout = (req, res, next) => {
     req.logout();
