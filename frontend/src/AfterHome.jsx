@@ -53,8 +53,6 @@ flex-direction : column;
 const AfterHome = ({ match }) => {
     const logout = () => {
         Axios.get('http://localhost:5000/farmer/logout').then(response => {
-            window.location = `${response.data.redirect}`
-        }).then(response => {
             if (response.data.redirect === '/')
                 window.location = '/'
         }).catch(e => console.log(e))
