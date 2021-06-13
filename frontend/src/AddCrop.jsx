@@ -38,7 +38,7 @@ const AddCrop = ({ match }) => {
                 weight: weight,
                 price: price,
                 cropType: cropType,
-                owner:  match.params.id
+                owner: match.params.id
             },
             withCredentials: true,
             credentials: 'same-origin',
@@ -47,6 +47,9 @@ const AddCrop = ({ match }) => {
         }).then(function (response) {
             if (response.data.redirect === '/') {
                 window.location = `/afterhome/${match.params.id}`
+            }
+            else {
+                window.location = '/login'
             }
         }).catch(function (error) {
             console.log(error)

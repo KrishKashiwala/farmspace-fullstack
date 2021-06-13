@@ -16,7 +16,7 @@ function App() {
           <Route path='/login' exact component={Login} />
           <Route path='/afterhome/addcrop/:id' exact component={AddCrop} />
           <Route path='/afterhome/:id' exact component={AfterHome} />
-          <Route path="*" component={() => "<h1>404 not found</h1>"} />
+          <Route path="*" component={() => "404 not found"} />
         </Switch>
 
 

@@ -55,6 +55,8 @@ const AfterHome = ({ match }) => {
         Axios.get('http://localhost:5000/farmer/logout').then(response => {
             if (response.data.redirect === '/')
                 window.location = '/'
+            else
+                window.location = '/login'
         }).catch(e => console.log(e))
 
     }
@@ -81,7 +83,7 @@ const AfterHome = ({ match }) => {
         await fetch('http://localhost:5000/crop/trendingspices').then(res => res.json()).then(data => setSpicesData(data))
     }
     const loggedRequest = async () => {
-        await fetch(`http://localhost:5000/farmer/loggedfarmer/${match.params.id}`).then(res => res.json()).then(data => {
+        await fetch(`http://localhost:5000/farmer/loggedfarmer/${match.params.id}`, { credentials: 'include' }).then(res => res.json()).then(data => {
             console.log(data)
             setLoggedFarmer(data)
         })

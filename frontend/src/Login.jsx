@@ -93,8 +93,8 @@ const Login = () => {
             if (response.data.redirect === '/') {
                 window.location = `/afterhome/${response.data.val._id}`
             }
-            else if (response.data.redirect === '/error') {
-                console.log('error in login after')
+            else {
+                window.location = "/login"
             }
         }).catch(function (error) {
             console.log(error)

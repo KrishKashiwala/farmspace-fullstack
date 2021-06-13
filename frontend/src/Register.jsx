@@ -67,6 +67,9 @@ const Register = ({ history }) => {
             if (response.data.redirect === '/login') {
                 window.location = "/login"
             }
+            else {
+                window.location = "/login"
+            }
         }).catch(function (error) {
             console.log(error)
         })
