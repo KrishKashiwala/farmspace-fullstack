@@ -124,7 +124,7 @@ const AfterHome = ({ match }) => {
             <div className="landing_page">
                 <img src={landingImage} alt="landingImage" />
                 <h1>Connecting farmers to Wholesalers and Customers</h1>
-                <Link to={`${loggedFarmer._id}/addcrop`}>
+                <Link to={`addcrop/${loggedFarmer._id}`}>
                     <button className="btn">Add crop <i class="fa fa-plus"></i> </button>
                 </Link>
             </div>

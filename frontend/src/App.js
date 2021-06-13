@@ -14,7 +14,7 @@ function App() {
         <Route path='/' exact component={HomePage} />
         <Route path='/register' exact component={Register} />
         <Route path='/login' exact component={Login} />
-        <Route path='/afterhome/:id/addcrop' exact component={AddCrop} />
+        <Route path='/afterhome/addcrop/:id' exact component={AddCrop} />
         <Route path='/afterhome/:id' exact component={AfterHome} />
       </Router>
     </div>

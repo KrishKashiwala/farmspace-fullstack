@@ -1,12 +1,15 @@
-// const express = require('express');
-// const router = express.Router();
-// const cropsControllers = require('../Controllers/cropsController')
+const express = require('express');
+const router = express.Router();
+const cropsControllers = require('../Controllers/cropsController')
+// ............... GET Requests ..............
+router.get('/', cropsControllers.baseRoute)
+router.get('/trendingvegetables', cropsControllers.TrendVeggies)
+router.get('/trendingfruits', cropsControllers.TrendFruits)
+router.get('/trendingspices', cropsControllers.TrendSpices)
 
-// router.get('/', cropsControllers.baseRoute)
-// router.get('/trendingvegetables', cropsControllers.TrendVeggies)
-// router.get('/trendingfruits', cropsControllers.TrendFruits)
-// router.get('/trendingspices', cropsControllers.TrendSpices)
-// router.post('/:id/addcrops', cropsControllers.addCrops)
+// ...............POST Requests................
+
+router.post('/addcrop/:id', cropsControllers.addCrops)
 
 
-// module.exports = router;
+module.exports = router;

@@ -71,8 +71,9 @@ app.use((req, res, next) => {
  */
 
 // Imports all of the routes from ./routes/index.js
+
 app.use('/farmer', require('./Routes/farmerRoutes'));
-// app.use('/crop', require('./Routes/cropsRoutes'))
+app.use('/crop', require('./Routes/cropsRoutes'))
 
 
 /**
