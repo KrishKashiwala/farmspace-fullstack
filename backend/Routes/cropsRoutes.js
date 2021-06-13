@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const cropsControllers = require('../Controllers/cropsController')
+const isAuth = require('../middleware/authMiddleware')
 // ............... GET Requests ..............
 router.get('/', cropsControllers.baseRoute)
 router.get('/trendingvegetables', cropsControllers.TrendVeggies)

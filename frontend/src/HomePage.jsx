@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import logo from './assests/images/logo.jpg'
+import Axios from 'axios'
 import landingImage from './assests/images/back-temp.jpg'
 import './assests/css/HomePage.css'
 import Footer from './Footer'
@@ -48,13 +49,25 @@ flex-direction : column;
 
 `
 const HomePage = ({ match, history, location }) => {
+
     const [loggedFarmer, setLoggedFarmer] = useState({})
     const [veggiesData, setVeggiesData] = useState([{}])
     const [fruitsData, setFruitsData] = useState([{}])
     const [spicesData, setSpicesData] = useState([{}])
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    useEffect(async () => {
-        // loggedRequest();
+    const loggedCheck = () => {
+        Axios({ method: 'GET', url: 'www.localhost:5000/farmer/' }).then(response => {
+
+            if (response.data.flag) {
+                setLoggedFarmer(response.data.val)
+            }
+        }).catch(e => {
+            console.log(e)
+        })
+    }
+    console.log('hello logged farmer', loggedFarmer)
+    useEffect(() => {
+        loggedCheck()
         // veggiesRequest();
         // fruitsRequest();
         // spicesRequest();
@@ -100,6 +113,7 @@ const HomePage = ({ match, history, location }) => {
                         <Link to="/login">
                             <li>login</li>
                         </Link>
+                        <li>{loggedFarmer.fname}</li>
 
                         <li className="free"><a className="btn free" href="#trendcontainer">Trending</a></li>
 

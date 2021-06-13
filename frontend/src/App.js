@@ -6,6 +6,7 @@ import Register from './Register';
 import Login from './Login';
 import AddCrop from './AddCrop';
 import AfterHome from './AfterHome';
+import ProtectedRoute from './ProtectedRoute'
 function App() {
   return (
     <div>
@@ -17,6 +18,7 @@ function App() {
           <Route path='/afterhome/addcrop/:id' exact component={AddCrop} />
           <Route path='/afterhome/:id' exact component={AfterHome} />
           <Route path="*" component={() => "404 not found"} />
+
         </Switch>
 
 

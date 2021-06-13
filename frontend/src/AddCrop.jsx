@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { withRouter } from 'react-router-dom'
 import Axios from 'axios'
 const LeftContainer = styled.div`
 align-items : center;
@@ -27,10 +28,11 @@ font-size : 1.5em;
 const Span = styled.span`
 
 `
+
 const AddCrop = ({ match }) => {
     console.log(match)
     const addCrop = (e) => {
-        // e.preventDefault()
+
         Axios({
             method: 'POST',
             data: {
@@ -121,4 +123,4 @@ const AddCrop = ({ match }) => {
     )
 }
 
-export default AddCrop
+export default withRouter(AddCrop)

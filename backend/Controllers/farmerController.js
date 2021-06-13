@@ -14,10 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 const Farmers = mongoose.model('farmerdata')
 
 exports.baseRoute = async (req, res, next) => {
-    // if (req.isAuthenticated()) {
-    // }
-
-    res.json('hello')
+    res.json({ 'val': req.user, 'flag': true })
 }
 exports.createFarmer = (req, res, next) => {
     Farmers.findOne({ email: req.body.email }, async (err, data) => {
@@ -76,8 +73,10 @@ exports.validFarmer = (req, res, next) => {
     })(req, res, next)
 }
 exports.logout = (req, res, next) => {
-    req.logout();
-    res.json({ 'redirect': '/' })
+    req.session.destroy((err) => {
+        if (err) console.log(err)
+        res.json({ 'redirect': '/' })
+    })
 }
 exports.loggedFarmerData = (req, res) => {
 
@@ -87,5 +86,6 @@ exports.loggedFarmerData = (req, res) => {
             res.json(data)
         }
     })
+
 
 }

@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const { isAuth } = require('../middleware/authMiddleware')
+const { isAuth, isAdmin } = require('../middleware/authMiddleware')
 const farmerControllers = require('../Controllers/farmerController');
 
 //...............GET Requests.............
-router.get('/', farmerControllers.baseRoute)
-router.get('/logout', farmerControllers.logout)
-router.get('/loggedfarmer/:id', farmerControllers.loggedFarmerData)
+router.get('/', isAuth, farmerControllers.baseRoute)
+router.get('/logout', isAuth, farmerControllers.logout)
+router.get('/loggedfarmer/:id', isAuth, farmerControllers.loggedFarmerData)
 // router.get('/protected-route', isAuth, (req, res, next) => {
 // 	res.send(` ${req.user.email} made it to the route.`);
 // });

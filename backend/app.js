@@ -24,7 +24,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const corsOptions = {
-    origin: 'http://localhost:3000',
+    origin: 'http://localhost:3000/',
     credentials: true,            //access-control-allow-credentials:true
     optionSuccessStatus: 200
 }
@@ -40,7 +40,7 @@ const dbOptions = {
 }
 
 app.use(session({
-    secret: 'anything',
+    secret: process.env.SECRET,
     resave: true,
     saveUninitialized: true,
     store: MongoStore.create({ mongoUrl: process.env.DATABASE, collection: 'sessions', ...dbOptions }),
@@ -74,6 +74,7 @@ app.use((req, res, next) => {
 
 app.use('/farmer', require('./Routes/farmerRoutes'));
 app.use('/crop', require('./Routes/cropsRoutes'))
+app.use('/', require('./Routes/base'))
 
 
 /**
