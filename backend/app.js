@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 var passport = require('passport');
 var crypto = require('crypto');
-var cors = require('cors')
+const cors = require('cors')
 const logger = require('morgan')
 const connection = require('./config/database');
 
@@ -19,15 +19,15 @@ require('dotenv').config();
 
 // Create the Express application
 var app = express();
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
 const corsOptions = {
-    origin: 'http://localhost:3000/',
+    origin: 'http://localhost:3000',
     credentials: true,            //access-control-allow-credentials:true
     optionSuccessStatus: 200
 }
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+
 app.use(cors(corsOptions))
 app.use(logger('dev'))
 /**
@@ -74,7 +74,7 @@ app.use((req, res, next) => {
 
 app.use('/farmer', require('./Routes/farmerRoutes'));
 app.use('/crop', require('./Routes/cropsRoutes'))
-app.use('/', require('./Routes/base'))
+// app.use('/', require('./Routes/base'))
 
 
 /**
