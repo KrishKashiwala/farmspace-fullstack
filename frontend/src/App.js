@@ -7,6 +7,7 @@ import Login from './Login';
 import AddCrop from './AddCrop';
 import AfterHome from './AfterHome';
 import ProtectedRoute from './ProtectedRoute'
+import TRegister from './TRegister';
 function App() {
   return (
     <div>
@@ -17,6 +18,7 @@ function App() {
           <Route path='/login' exact component={Login} />
           <Route path='/afterhome/addcrop/:id' exact component={AddCrop} />
           <Route path='/afterhome/:id' exact component={AfterHome} />
+          <Route path="/tregister" exact component={TRegister} />
           <Route path="*" component={() => "404 not found"} />
 
         </Switch>

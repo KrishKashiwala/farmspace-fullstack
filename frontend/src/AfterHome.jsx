@@ -127,7 +127,7 @@ const AfterHome = ({ match }) => {
                 <img src={landingImage} alt="landingImage" />
                 <h1>Connecting farmers to Wholesalers and Customers</h1>
                 <Link to={`addcrop/${loggedFarmer._id}`}>
-                    <button className="btn">Add crop <i class="fa fa-plus"></i> </button>
+                    <button onClick={loggedRequest} className="btn">Add crop <i class="fa fa-plus"></i> </button>
                 </Link>
             </div>
 
