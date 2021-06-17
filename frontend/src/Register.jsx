@@ -41,6 +41,7 @@ const Register = ({ history }) => {
     const [state, setState] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const [password, setPassword] = useState('')
+    const [image, setImage] = useState('')
 
     console.log(history)
     const registerinfo = () => {
@@ -58,6 +59,7 @@ const Register = ({ history }) => {
                 city: city,
                 state: state,
                 mobileNo: mobileNo,
+                image: image,
                 // eslint-disable-next-line no-dupe-keys
                 address: address
             },
@@ -76,6 +78,7 @@ const Register = ({ history }) => {
     }
     return (
         <Container>
+
             <div>
                 <Img src={farmerlogo} alt="farmer_logo" />
                 <H2>Farmers are the seed to humanity</H2>
@@ -125,7 +128,10 @@ const Register = ({ history }) => {
                         <label htmlFor="pincode">Pincode</label>
                         <input type="number" className="form-control" name="pincode" id="pincode" onChange={(e) => setPincode(e.target.value)} placeholder="enter your pincode" />
                     </div>
-
+                    <div className="form-group col-md-5">
+                        <label htmlFor="image">Pincode</label>
+                        <input type="file" className="form-control" name="image" id="image" onChange={(e) => setImage(e.target.value)} />
+                    </div>
                 </div>
                 <div className="form-row">
                     <div className="form-group col-md-6">
@@ -140,7 +146,8 @@ const Register = ({ history }) => {
                 <button onClick={registerinfo} className="btn btn-success btn-block">Submit</button>
 
             </div>
-        </Container>
+
+        </Container >
     )
 }
 

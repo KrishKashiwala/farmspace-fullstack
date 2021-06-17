@@ -41,7 +41,7 @@ exports.createFarmer = (req, res, next) => {
                 confirmPassword: req.body.confirmPassword,
                 email: req.body.email,
                 password: hashedPassword,
-
+                image: req.body.image
             })
             console.log(newFarmer)
             await newFarmer.save()
